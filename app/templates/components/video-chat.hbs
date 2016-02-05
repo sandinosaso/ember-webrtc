@@ -1,0 +1,15 @@
+{{#if videoService.connectionReady}}
+    {{#unless inVideo}}
+        <a href="#" {{action 'joinVideo'}}>Talk to a customer service agent now!</a>
+    {{else}}
+        <div class="participants">
+            {{#if videoService.localMedia}}
+                <video class="local" autoplay muted="muted" style="transform: scaleX(-1)"/>
+            {{/if}}
+            {{#each participants as |participant|}}
+                <video autoplay data-peer-id="{{participant.peer.id}}"/>
+            {{/each}}
+        </div>
+        <a href="#" {{action 'leaveVideo'}}>Hangup</a>
+    {{/unless}}
+{{/if}}
