@@ -1,3 +1,11 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="heading">
+    {{#link-to 'index'}}<img src="assets/images/logo.svg"/>{{/link-to}}
+    <div class="login">
+        <button class="btn">Join Now</button>
+        {{#link-to 'login'}}Login{{/link-to}}
+    </div>
+</div>
+{{video-chat}}
 
+{{outlet 'index'}}
 {{outlet}}

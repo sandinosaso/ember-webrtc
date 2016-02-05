@@ -7,6 +7,10 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  app.import('bower_components/socket.io-client/socket.io.js');
+
+  app.import('bower_components/simplewebrtc/simplewebrtc.bundle.js');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

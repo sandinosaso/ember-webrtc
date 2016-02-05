@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+.ember-application {
+    background-color: #219BAE;
+    color: eggshell;
+    padding: 10px 100px;
+}
+
+.btn {
+    padding: 7px 15px;
+    background-color: white;
+    color: #219BAE;
+    border: none;
+    margin: 0px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading img {
+    height: 50px;
+}
+
+.index {
+    text-align: center;
+}
+
+.index h1 {
+    font-weight: 500;
+}
+
+.index h2 {
+    font-weight: 300;
+}
+
+.login-form {
+    width: 500px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0 20px #555;
+}
+
+input {
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #219BAE;
+    border-radius: 6px;
+    font-weight: 300;
+    margin: 10px;
+    outline: none;
+}
+
+.video-chat {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    color: #999;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 22px #555;
+}
+
+video {
+    height: 200px;
+    border-radius: 8px;
+}
