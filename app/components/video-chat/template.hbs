@@ -1,6 +1,6 @@
 {{#if videoService.connectionReady}}
     {{#unless inVideo}}
-        <a href="#" {{action 'joinVideo'}}>Talk to a customer service agent now!</a>
+        <a tabindex="1" href="#" {{action 'joinVideo'}}>Talk to a customer service agent now!</a>
     {{else}}
         <div class="participants">
             {{#if videoService.localMedia}}
