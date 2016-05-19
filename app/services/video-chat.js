@@ -16,7 +16,7 @@ export default Ember.Service.extend(Ember.Evented, {
             localVideoEl: null,
             autoRequestMedia: false,
             connection: new SocketIo1xConnection({
-                url: 'http://localhost:8888',
+                url: 'http://192.168.1.45:8888',
                 port: '8888',
                 socketio: {'force new connection':true},
             })
@@ -45,6 +45,26 @@ export default Ember.Service.extend(Ember.Evented, {
                 this.trigger('localMediaStarted', stream);
             }
         });
+    },
+
+    pauseVideo(){
+        const sessionManager = this.get('sessionManager');
+        sessionManager.webrtc.pause();
+    },
+
+    resumeVideo(){
+        const sessionManager = this.get('sessionManager');
+        sessionManager.webrtc.resume();
+    },
+
+    muteAudio(){
+        const sessionManager = this.get('sessionManager');
+        sessionManager.webrtc.mute();
+    },
+
+    unMuteAudio(){
+        const sessionManager = this.get('sessionManager');
+        sessionManager.webrtc.unmute();
     },
 
     leaveRoom() {

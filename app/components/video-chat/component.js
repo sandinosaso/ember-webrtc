@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+const { 
+    computed,
+    get,
+    set
+} = Ember;
+
 export default Ember.Component.extend({
     classNames: ['video-chat'],
     inVideo: false,
@@ -9,25 +15,57 @@ export default Ember.Component.extend({
 
     init() {
         this._super(...arguments);
-        const videoService = this.get('videoService');
+        const videoService = get(this, 'videoService');
 
 
         videoService.on('localMediaStarted', this.localMediaStarted.bind(this));
         videoService.on('videoAdded', this.videoAdded.bind(this));
         videoService.on('videoRemoved', this.videoRemoved.bind(this));
-
+        
         window.thething = this;
     },
 
+    isVideoOn: computed({
+        get() {
+          return false;
+        }
+    }),
+    
+    isAudioOn: computed({
+        get() {
+          return false;
+        }
+    }),
+
     actions: {
         joinVideo() {
-            this.set('inVideo', true);
-            this.get('videoService').joinRoom();
+            set(this, 'inVideo', true);
+            get(this, 'videoService').joinRoom();
         },
 
         leaveVideo() {
-            this.set('inVideo', false);
-            this.get('videoService').leaveRoom();
+            set(this, 'inVideo', false);
+            get(this, 'videoService').leaveRoom();
+        },
+
+        pauseVideo(){
+            get(this, 'videoService').pauseVideo();
+            set(this, 'isVideoOn', false);
+        },
+
+        resumeVideo(){
+            get(this, 'videoService').resumeVideo();
+            set(this, 'isVideoOn', true);
+        },
+
+        muteAudio(){
+            get(this, 'videoService').muteAudio();
+            set(this, 'isAudioOn', false);
+        },
+
+        unMuteAudio(){
+            get(this, 'videoService').unMuteAudio();
+            set(this, 'isAudioOn', true);
         }
     },
 
@@ -38,7 +76,7 @@ export default Ember.Component.extend({
     },
 
     videoAdded(person) {
-        this.get('participants').addObject(person);
+        get(this, 'participants').addObject(person);
         Ember.run.scheduleOnce('afterRender', this, function() {
             const peerVideoEl = this.$(`video[data-peer-id='${person.peer.id}']`)[0];
             peerVideoEl.src = URL.createObjectURL(person.peer.stream);
@@ -46,6 +84,6 @@ export default Ember.Component.extend({
     },
 
     videoRemoved(person) {
-        this.get('participants').removeObject(person);
+        get(this, 'participants').removeObject(person);
     }
 });

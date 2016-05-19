@@ -81,3 +81,53 @@ video {
     height: 200px;
     border-radius: 8px;
 }
+
+.muted, .paused{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    color: #12acef;
+}
+
+.muted{
+    left: 0px;
+    bottom: 10%;
+    width: 100%;
+}
+
+.paused{
+    left: 0px;
+    top: 40%;
+    width: 100%;
+}
+
+.room-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.room-navbar ul>li {
+    float: left;
+    line-height: 50px;
+}
+
+.room-navbar-sidebar .room-navbar-sidebar-link {
+    text-align: center;
+    color: #D2D2D2;
+    width: 36px;
+    height: 36px;
+    line-height: 34px;
+    font-size: 24px;
+    padding: 0;
+    margin: 7px 4px 0 0;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.room-navbar ul>li>a {
+    display: inline-block;
+    padding: 0;
+    background-color: transparent;
+}

@@ -11,5 +11,46 @@
             {{/each}}
         </div>
         <a href="#" {{action 'leaveVideo'}}>Hangup</a>
+
+        <span class="btn" {{action 'muteAudio'}}>MUTE</span>
+        <span class="btn muted" {{action 'unMuteAudio'}}>UNMUTE</span>
+        <span class="btn paused" {{action 'pauseVideo'}}>PAUSE</span>
+        <span class="btn" {{action 'resumeVideo'}}>RESUME</span>
+
+        <div class="room-navbar">
+                <ul>
+                    <li>
+                        <a class="room-navbar-sidebar-link active">
+                            {{fa-icon "video-camera"}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="room-navbar-sidebar-link active">
+                           {{#if isAudioOn}}
+                             {{fa-icon "microphone" click=(action "muteAudio")}}
+                           {{else}}
+                             {{fa-icon "microphone-slash" click=(action "unMuteAudio")}}
+                           {{/if}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="room-navbar-sidebar-link">
+                           {{#if isVideoOn}}
+                             {{fa-icon "video-camera" click=(action "pauseVideo")}}
+                           {{else}}
+                             {{fa-icon "camera" click=(action "resumeVideo")}}
+                           {{/if}}
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="room-navbar-sidebar-link room-navbar-sidebar-link-danger" {{action 'leaveVideo'}}>
+                            {{fa-icon "danger"}}
+                        </a>
+                    </li>
+                </ul>
+        </div>
+
+
     {{/unless}}
 {{/if}}
