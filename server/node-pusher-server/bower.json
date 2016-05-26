@@ -1,0 +1,6 @@
+{
+  "name": "pusher-server",
+  "dependencies": {
+    "pusher": "~3.0.0"
+  }
+}

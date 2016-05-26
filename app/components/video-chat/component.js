@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import $ from 'jquery';
 
-const { 
+const {
     computed,
     get,
     set
@@ -21,7 +22,7 @@ export default Ember.Component.extend({
         videoService.on('localMediaStarted', this.localMediaStarted.bind(this));
         videoService.on('videoAdded', this.videoAdded.bind(this));
         videoService.on('videoRemoved', this.videoRemoved.bind(this));
-        
+
         window.thething = this;
     },
 
@@ -30,7 +31,7 @@ export default Ember.Component.extend({
           return false;
         }
     }),
-    
+
     isAudioOn: computed({
         get() {
           return false;
@@ -41,11 +42,17 @@ export default Ember.Component.extend({
         joinVideo() {
             set(this, 'inVideo', true);
             get(this, 'videoService').joinRoom();
+
+            $("#message-list").css('height', '150px');
+            $(".top-bar").css('height', '90%');
         },
 
         leaveVideo() {
             set(this, 'inVideo', false);
             get(this, 'videoService').leaveRoom();
+
+            $("#message-list").css('height', '440px');
+            $(".top-bar").css('height', '50px');
         },
 
         pauseVideo(){

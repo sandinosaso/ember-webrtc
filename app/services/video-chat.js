@@ -16,7 +16,7 @@ export default Ember.Service.extend(Ember.Evented, {
             localVideoEl: null,
             autoRequestMedia: false,
             connection: new SocketIo1xConnection({
-                url: 'http://192.168.1.45:8888',
+                url: 'http://localhost:8888',
                 port: '8888',
                 socketio: {'force new connection':true},
             })
