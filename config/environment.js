@@ -16,10 +16,14 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      PUSHER: {
+        key: '376656a8edb3f7821b1a',
+      },
     }
   };
 
   if (environment === 'development') {
+    ENV.APP.SERVER_URL = 'http://localhost:3000';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -40,8 +44,19 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.APP.SERVER_URL = 'https://pusher-chat-sinatra.herokuapp.com';
 
   }
+
+  ENV['contentSecurityPolicy'] = {
+    'default-src': "'none'",
+    'script-src': "'self' https://stats.pusher.com/",
+    'connect-src': "'self' wss://ws.pusherapp.com/ http://localhost:3000/",
+    'img-src': "'self'",
+    'style-src': "'self' fonts.googleapis.com http://d3dhju7igb20wy.cloudfront.net/ 'unsafe-inline'",
+    'font-src': "'self' fonts.gstatic.com http://d3dhju7igb20wy.cloudfront.net/",
+    'media-src': "'self'"
+  };
 
   return ENV;
 };

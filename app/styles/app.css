@@ -1,17 +1,100 @@
-* {
-    box-sizing: border-box;
-}
 
 body {
-    font-family: 'Lato', sans-serif;
-    color: white;
+  height: 150vh;
 }
 
-.ember-application {
-    background-color: #219BAE;
-    color: eggshell;
-    padding: 10px 100px;
+.marvel-device.iphone6.silver {
+  margin-top: -30px;
 }
+
+.marvel-device .screen {
+  text-align: left;
+  z-index: 3;
+  color: inherit;
+  -webkit-box-shadow: inherit;
+  box-shadow: inherit;
+}
+
+.action-bar {
+  width: 330px;
+}
+
+.option {
+  width: 42px;
+  padding-top: 8px;
+}
+
+span.emoji {
+  font-family: initial;
+}
+
+#msg-input {
+  width: 245px;
+}
+
+.chat-app {
+  position: relative;
+  height: 100%;
+  padding-top: 0 !important;
+}
+
+.chat-app .action-bar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+#try-it-out {
+  width: 160px;
+  font-weight: 200;
+  padding: 10px 16px;
+  vertical-align: bottom;
+}
+
+#message-list {
+  height: 440px;
+  overflow: scroll;
+}
+
+#input-name {
+  width: 350px;
+}
+
+.chat-app .action-bar button.option.send-message {
+  border-radius: 0;
+  padding-top: 0;
+}
+
+input.input-message {
+  display: inline-block;
+  width: 87%;
+}
+
+input.input-message:focus,
+input.input-message:hover {
+  outline: none;
+  box-shadow: none;
+}
+
+.red-gradient-background {
+  background: #fe845a;
+  background-image: -webkit-linear-gradient(top, #fe845a, #d14e37);
+  background-image: linear-gradient(to bottom, #fe845a, #d14e37);
+}
+
+.top-bar{
+  height: 50px;
+  background-color: white;
+}
+
+.chat-messages-container{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+}
+
+/* VIDEO CHAT STYLES */
 
 .btn {
     padding: 7px 15px;
@@ -23,50 +106,7 @@ body {
     font-size: 13px;
 }
 
-.heading {
-    display: flex;
-    justify-content: space-between;
-}
-
-.heading img {
-    height: 50px;
-}
-
-.index {
-    text-align: center;
-}
-
-.index h1 {
-    font-weight: 500;
-}
-
-.index h2 {
-    font-weight: 300;
-}
-
-.login-form {
-    width: 500px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    margin: 100px auto;
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 0 20px #555;
-}
-
-input {
-    font-size: 18px;
-    padding: 10px;
-    border: 1px solid #219BAE;
-    border-radius: 6px;
-    font-weight: 300;
-    margin: 10px;
-    outline: none;
-}
-
 .video-chat {
-    position: absolute;
     width: 100%;
     left: 0;
     bottom: 0;
@@ -99,6 +139,10 @@ video {
     left: 0px;
     top: 40%;
     width: 100%;
+}
+
+.room-navbar{
+  height: 50px;
 }
 
 .room-navbar ul {
