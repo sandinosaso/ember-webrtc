@@ -1,0 +1,192 @@
+
+body {
+  height: 150vh;
+}
+
+.marvel-device.iphone6.silver {
+  margin-top: -30px;
+}
+
+.marvel-device .screen {
+  text-align: left;
+  z-index: 3;
+  color: inherit;
+  -webkit-box-shadow: inherit;
+  box-shadow: inherit;
+}
+
+.action-bar {
+  width: 330px;
+}
+
+.option {
+  width: 42px;
+  padding-top: 8px;
+}
+
+span.emoji {
+  font-family: initial;
+}
+
+#msg-input {
+  width: 245px;
+}
+
+.chat-app {
+  position: relative;
+  height: 100%;
+  padding-top: 0 !important;
+}
+
+.chat-app .action-bar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+#try-it-out {
+  width: 160px;
+  font-weight: 200;
+  padding: 10px 16px;
+  vertical-align: bottom;
+}
+
+#message-list {
+  height: 440px;
+  overflow: scroll;
+}
+
+#input-name {
+  width: 350px;
+}
+
+.chat-app .action-bar button.option.send-message {
+  border-radius: 0;
+  padding-top: 0;
+}
+
+input.input-message {
+  display: inline-block;
+  width: 87%;
+}
+
+input.input-message:focus,
+input.input-message:hover {
+  outline: none;
+  box-shadow: none;
+}
+
+.red-gradient-background {
+  background: #fe845a;
+  background-image: -webkit-linear-gradient(top, #fe845a, #d14e37);
+  background-image: linear-gradient(to bottom, #fe845a, #d14e37);
+}
+
+.top-bar{
+  height: 50px;
+  background-color: white;
+}
+
+.chat-messages-container{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+}
+
+/* VIDEO CHAT STYLES */
+
+.btn {
+    padding: 7px 15px;
+    background-color: white;
+    color: #219BAE;
+    border: none;
+    margin: 0px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.video-chat {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    color: #999;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 22px #555;
+}
+
+
+
+.participants video{
+  height: 200px;
+  border-radius: 8px;
+}
+
+.participants video.video-small {
+  height: 60px;
+  border-radius: 8px;
+  position: absolute;
+  top: 150px;
+  right: 67px;
+}
+
+.participants video.video-big {
+  height: 200px;
+  border-radius: 8px;
+}
+
+.muted, .paused{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    color: #12acef;
+}
+
+.muted{
+    left: 0px;
+    bottom: 10%;
+    width: 100%;
+}
+
+.paused{
+    left: 0px;
+    top: 40%;
+    width: 100%;
+}
+
+.room-navbar{
+  height: 50px;
+}
+
+.room-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.room-navbar ul>li {
+    float: left;
+    line-height: 50px;
+}
+
+.room-navbar-sidebar .room-navbar-sidebar-link {
+    text-align: center;
+    color: #D2D2D2;
+    width: 36px;
+    height: 36px;
+    line-height: 34px;
+    font-size: 24px;
+    padding: 0;
+    margin: 7px 4px 0 0;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.room-navbar ul>li>a {
+    display: inline-block;
+    padding: 0;
+    background-color: transparent;
+}

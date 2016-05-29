@@ -1,0 +1,48 @@
+{{#if videoService.connectionReady}}
+    {{#unless inVideo}}
+        <a tabindex="1" href="#" {{action 'joinVideo'}}>Talk to a customer service agent now!</a>
+    {{else}}
+        <div class="participants">
+            {{#if videoService.localMedia}}
+                <video id='myvideo' class="{{myVideoClass}}" autoplay muted="muted" style="transform: scaleX(-1)"/>
+            {{/if}}
+            {{#each participants as |participant|}}
+                <video autoplay class="{{participantsVideoClass}}" data-peer-id="{{participant.peer.id}}" {{action 'leaveVideo'}}/>
+            {{/each}}
+        </div>
+
+
+         <div class="room-navbar">
+          <ul>
+              <li>
+                  <a href="#" {{action 'leaveVideo'}}>Hangup</a>
+              </li>
+              <li>
+                   {{#if isAudioOn}}
+                     {{fa-icon "microphone" click=(action "muteAudio")}}
+                   {{else}}
+                     {{fa-icon "microphone-slash" click=(action "unMuteAudio")}}
+                   {{/if}}
+              </li>
+              <li>
+                   {{#if isVideoOn}}
+                     {{fa-icon "video-camera" click=(action "pauseVideo")}}
+                   {{else}}
+                     {{fa-icon "bell-slash" click=(action "resumeVideo")}}
+                   {{/if}}
+              </li>
+
+              <li>
+                  <a class="room-navbar-sidebar-link room-navbar-sidebar-link-danger" {{action 'leaveVideo'}}>
+                      {{fa-icon "danger"}}
+                  </a>
+              </li>
+          </ul>
+
+
+
+        </div>
+
+
+    {{/unless}}
+{{/if}}
