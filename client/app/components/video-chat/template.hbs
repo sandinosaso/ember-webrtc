@@ -1,6 +1,8 @@
 {{#if videoService.connectionReady}}
     {{#unless inVideo}}
-        <a tabindex="1" href="#" {{action 'joinVideo'}}>Talk to a customer service agent now!</a>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'joinVideo'}}>
+          <i class="material-icons md-18 mdl-button--primary">call</i>
+        </button>
     {{else}}
         <div class="participants">
             {{#if videoService.localMedia}}
@@ -13,29 +15,33 @@
 
 
          <div class="room-navbar">
-          <ul>
-              <li>
-                  <a href="#" {{action 'leaveVideo'}}>Hangup</a>
-              </li>
+          <ul class="video-controls">
               <li>
                    {{#if isAudioOn}}
-                     {{fa-icon "microphone" click=(action "muteAudio")}}
+                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary" {{action 'muteAudio'}}>
+                      <i class="material-icons">mic</i>
+                     </button>
                    {{else}}
-                     {{fa-icon "microphone-slash" click=(action "unMuteAudio")}}
+                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab {{if isSpeaking 'blink-button'}}" {{action 'unMuteAudio'}}>
+                      <i class="material-icons">mic_off</i>
+                     </button>
                    {{/if}}
+              </li>
+              <li>
+                  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" {{action 'leaveVideo'}}>
+                    <i class="material-icons A700 md18">call_end</i>
+                  </button>
               </li>
               <li>
                    {{#if isVideoOn}}
-                     {{fa-icon "video-camera" click=(action "pauseVideo")}}
+                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary" {{action 'pauseVideo'}}>
+                      <i class="material-icons">videocam</i>
+                     </button>
                    {{else}}
-                     {{fa-icon "bell-slash" click=(action "resumeVideo")}}
+                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'resumeVideo'}}>
+                      <i class="material-icons">videocam_off</i>
+                     </button>
                    {{/if}}
-              </li>
-
-              <li>
-                  <a class="room-navbar-sidebar-link room-navbar-sidebar-link-danger" {{action 'leaveVideo'}}>
-                      {{fa-icon "danger"}}
-                  </a>
               </li>
           </ul>
 

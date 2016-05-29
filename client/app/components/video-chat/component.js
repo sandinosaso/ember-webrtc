@@ -14,10 +14,17 @@ const {
 export default Ember.Component.extend({
     classNames: ['video-chat'],
     inVideo: false,
+    isSpeaking: false,
     videoService: service('video-chat'),
     currentUserService: service('current-user'),
 
-    participants: [],
+    //participants: [],
+
+    participants: computed({
+      get() {
+        return [];
+      }
+    }),
 
     init() {
         this._super(...arguments);
@@ -33,19 +40,19 @@ export default Ember.Component.extend({
 
     isVideoOn: computed({
       get() {
-        return false;
+        return true;
       }
     }),
 
     isAudioOn: computed({
       get() {
-        return false;
+        return true;
       }
     }),
 
-    myVideoClass: computed({
+    myVideoClass: computed('participants.[]', {
       get() {
-        return 'video-big';
+        return get(this, 'participants.length') > 0 ? 'video-small' : 'video-big';
       }
     }),
 
@@ -102,19 +109,11 @@ export default Ember.Component.extend({
         let speechEvents = hark(stream, options);
 
         speechEvents.on('speaking', () => {
-          if (get(this, 'isAudioOn')){
-            set(this, 'myVideoClass', 'video-big');
-            set(this, 'participantsVideoClass', 'video-small');
-            console.log('speaking');
-          }
+          this.toggleProperty('isSpeaking');
         });
 
         speechEvents.on('stopped_speaking', () => {
-          if (get(this, 'isAudioOn')){
-            set(this, 'myVideoClass', 'video-small');
-            set(this, 'participantsVideoClass', 'video-big');
-            console.log('stopped_speaking');
-          }
+          set(this, 'isSpeaking', false);
         });
 
     },
