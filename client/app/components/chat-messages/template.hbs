@@ -1,0 +1,37 @@
+<div class="chat-messages-container">
+  <div style="">
+    <div class="top-bar">
+      {{#video-chat}}{{/video-chat}}
+    </div>
+    <div class="sleep"></div>
+    <div class="volume"></div>
+    <div class="camera"></div>
+    <div class="sensor"></div>
+    <div class="speaker"></div>
+    <div class="screen">
+      <div class="light-grey-blue-background chat-app">
+        <div id="message-list">
+          <div class="time-divide" style="margin-top: 15px">
+            <span class="date">Today</span>
+          </div>
+
+          {{#each messages as |message|}}
+            <div class="message">
+              {{#chat-message message=message}}{{/chat-message}}
+            </div>
+          {{/each}}
+        </div>
+        <div class="action-bar">
+          <form>
+            {{ input value=newMessage class="input-message col-xs-10" id="message-input" }}
+            <button type="submit" class="option col-xs-1 green-background send-message" {{action "newMessage" }}>
+              <span class="white light fa fa-paper-plane-o"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="home"></div>
+    <div class="bottom-bar"></div>
+  </div>
+</div>
