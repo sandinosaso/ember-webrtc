@@ -14,7 +14,7 @@ const {
 export default Component.extend({
   currentUserService: service('current-user'),
   pusher: service(),
-  messages: ['Hi there!', 'Welcome to your chat app!'].map((message) => {
+  messages: ['Hola como te podemos ayudar?'].map((message) => {
     return {
       username: 'pusher',
       time: new Date(),
@@ -23,7 +23,7 @@ export default Component.extend({
   }),
   messageObserver: observer('messages.length', function() {
     run.scheduleOnce('afterRender', function() {
-      $("#message-list").scrollTop($("#message-list").height());
+      $("#message-list").scrollTop($("#message-list")[0].scrollHeight);
     });
   }),
   init() {

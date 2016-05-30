@@ -1,54 +1,100 @@
 {{#if videoService.connectionReady}}
     {{#unless inVideo}}
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'joinVideo'}}>
-          <i class="material-icons md-18 mdl-button--primary">call</i>
-        </button>
-    {{else}}
-        <div class="participants">
-            {{#if videoService.localMedia}}
-                <video id='myvideo' class="{{myVideoClass}}" autoplay muted="muted" style="transform: scaleX(-1)"/>
-            {{/if}}
-            {{#each participants as |participant|}}
-                <video autoplay class="{{participantsVideoClass}}" data-peer-id="{{participant.peer.id}}" {{action 'leaveVideo'}}/>
+      <div class="top-action-bar">
+        <div class="agents">
+          {{#if agents.length}}
+            {{#each agents as |agent|}}
+              <div class="avatar">
+                <img src="https://twitter.com/{{agent.profile_image}}/profile_image?size=original" />
+              </div>
             {{/each}}
+            <span>{{agents.length}} agentes disponible</span>
+          {{else}}
+            <span>Buscando agentes disponibles...</span>
+          {{/if}}
         </div>
 
-
-         <div class="room-navbar">
-          <ul class="video-controls">
-              <li>
-                   {{#if isAudioOn}}
-                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary" {{action 'muteAudio'}}>
-                      <i class="material-icons">mic</i>
-                     </button>
-                   {{else}}
-                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab {{if isSpeaking 'blink-button'}}" {{action 'unMuteAudio'}}>
-                      <i class="material-icons">mic_off</i>
-                     </button>
-                   {{/if}}
-              </li>
-              <li>
-                  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" {{action 'leaveVideo'}}>
-                    <i class="material-icons A700 md18">call_end</i>
-                  </button>
-              </li>
-              <li>
-                   {{#if isVideoOn}}
-                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary" {{action 'pauseVideo'}}>
-                      <i class="material-icons">videocam</i>
-                     </button>
-                   {{else}}
-                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'resumeVideo'}}>
-                      <i class="material-icons">videocam_off</i>
-                     </button>
-                   {{/if}}
-              </li>
-          </ul>
-
-
-
+        <div style="float: right">
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'joinVideo'}}>
+            <i class="material-icons md-18 mdl-button--primary">call</i>
+          </button>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'joinVideo'}}>
+            <i class="material-icons md-18 mdl-button--primary">video_call</i>
+          </button>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'closeChat'}}>
+            <i class="material-icons md-18">close</i>
+          </button>
         </div>
+      </div>
+    {{else}}
+      <div class="participants">
+          {{#if (and videoService.localMedia inVideo)}}
+              <video id='myvideo' class="{{myVideoClass}}" autoplay muted="muted" style="transform: scaleX(-1)"/>
+          {{/if}}
+          {{#each participants as |participant|}}
+              <video autoplay class="{{participantsVideoClass}}" data-peer-id="{{participant.peer.id}}" {{action 'leaveVideo'}}/>
+          {{/each}}
+      </div>
 
+
+       <div class="room-navbar">
+        <ul class="video-controls">
+            <li>
+                 {{#if isAudioOn}}
+                   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary" {{action 'muteAudio'}}>
+                    <i class="material-icons">mic</i>
+                   </button>
+                 {{else}}
+                   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab {{if isSpeaking 'blink-button'}}" {{action 'unMuteAudio'}}>
+                    <i class="material-icons">mic_off</i>
+                   </button>
+                 {{/if}}
+            </li>
+            <li>
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" {{action 'leaveVideo'}}>
+                  <i class="material-icons A700 md-18">call_end</i>
+                </button>
+            </li>
+            <li>
+                 {{#if isVideoOn}}
+                   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary" {{action 'pauseVideo'}}>
+                    <i class="material-icons">videocam</i>
+                   </button>
+                 {{else}}
+                   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'resumeVideo'}}>
+                    <i class="material-icons">videocam_off</i>
+                   </button>
+                 {{/if}}
+            </li>
+            <li>
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'leaveVideo'}}>
+                <i class="material-icons md-18">attach_file</i>
+              </button>
+            </li>
+        </ul>
+      </div>
+
+      <div id="remotes"></div>
+
+      {{!-- <section>
+          <form id="fileInfo">
+            <input type="file" id="fileInput" name="files"/>
+          </form>
+
+          <div class="progress">
+            <div class="label">Send progress: </div>
+            <progress id="sendProgress" max="0" value="0"></progress>
+          </div>
+
+          <div class="progress">
+            <div class="label">Receive progress: </div>
+            <progress id="receiveProgress" max="0" value="0"></progress>
+          </div>
+
+          <div id="bitrate"></div>
+          <a id="download"></a>
+          <span id="status"></span>
+      </section> --}}
 
     {{/unless}}
 {{/if}}
