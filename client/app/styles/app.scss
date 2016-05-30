@@ -134,6 +134,10 @@ input.input-message:hover {
   padding: 0 5px;
 }*/
 
+input[type="file"].none {
+  display: none;
+}
+
 .chat-messages-container{
   position: fixed;
   bottom: 0;

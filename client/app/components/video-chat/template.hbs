@@ -67,14 +67,21 @@
                  {{/if}}
             </li>
             <li>
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" {{action 'leaveVideo'}}>
-                <i class="material-icons md-18">attach_file</i>
-              </button>
+
+              <div class="file_input">
+                <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                  <i class="material-icons">attach_file</i>
+                  <input id="file_to_share" class="none" type="file" />
+                </label>
+              </div>
+
             </li>
         </ul>
       </div>
 
-      <div id="remotes"></div>
+      <div id="remotes">
+
+      </div>
 
       {{!-- <section>
           <form id="fileInfo">
