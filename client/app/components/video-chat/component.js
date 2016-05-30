@@ -2,8 +2,6 @@ import Ember from 'ember';
 import $ from 'jquery';
 import hark from 'npm:hark';
 
-
-
 const {
     computed,
     get,
@@ -18,18 +16,60 @@ export default Ember.Component.extend({
     videoService: service('video-chat'),
     currentUserService: service('current-user'),
 
-    //participants: [],
+    agents: [{
+      id: 1,
+      name: 'Agent1',
+      email: 'sandinosaso@gmail.com',
+      profile_image: 'sandinosaso',
+      active: true,
+      activeFrom: '03:00:00',
+      activeTo: '20:00:00',
+    },
+    {
+      id: 2,
+      name: 'Agent2',
+      email: 'sandinosaso@gmail.com',
+      profile_image: 'luissuarez9',
+      active: true,
+      activeFrom: '03:00:00',
+      activeTo: '20:00:00',
+    },
+    {
+      id: 3,
+      name: 'Agent3',
+      email: 'sandinosaso@gmail.com',
+      profile_image: 'aybuenota',
+      active: true,
+      activeFrom: '03:00:00',
+      activeTo: '20:00:00',
+    }
+  ],
 
-    participants: computed({
-      get() {
-        return [];
-      }
-    }),
+    // checkAgents() {
+    //   return new Ember.RSVP.Promise((resolve, reject) => {
+    //         Ember.$.ajax({
+    //             url: 'api/agents',
+    //             type: 'GET',
+    //             contentType: 'application/json;charset=utf-8',
+    //             dataType: 'json'
+    //         }).then(function(response) {
+    //             Ember.run(function() {
+    //                 resolve({
+    //                     response: response
+    //                 });
+    //             });
+    //         }, function(xhr) {
+    //             var response = xhr.responseText;
+    //             Ember.run(function() {
+    //                 reject(response);
+    //             });
+    //         });
+    //     });
+    // },
 
     init() {
         this._super(...arguments);
         const videoService = get(this, 'videoService');
-
 
         videoService.on('localMediaStarted', this.localMediaStarted.bind(this));
         videoService.on('videoAdded', this.videoAdded.bind(this));
@@ -37,6 +77,25 @@ export default Ember.Component.extend({
 
         window.thething = this;
     },
+
+    // agents: computed({
+    //   get() {
+    //     let agents = this.checkAgents();
+    //     agents.then((result) => {
+    //       // on fulfillment
+    //       return result.response.agents;
+    //     }, () => {
+    //       // on rejection
+    //       return [];
+    //     });
+    //   }
+    // }),
+
+    participants: computed({
+      get() {
+        return [];
+      }
+    }),
 
     isVideoOn: computed({
       get() {
@@ -67,16 +126,16 @@ export default Ember.Component.extend({
             set(this, 'inVideo', true);
             get(this, 'videoService').joinRoom();
 
-            $("#message-list").css('height', '150px');
-            $(".top-bar").css('height', '90%');
+            $("#message-list").removeClass('message-list-big').addClass('message-list-small');
+            $(".top-bar").removeClass('top-bar-small').addClass('top-bar-big');
         },
 
         leaveVideo() {
             set(this, 'inVideo', false);
             get(this, 'videoService').leaveRoom();
 
-            $("#message-list").css('height', '440px');
-            $(".top-bar").css('height', '50px');
+            $("#message-list").removeClass('message-list-small').addClass('message-list-big');
+            $(".top-bar").removeClass('top-bar-big').addClass('top-bar-small');
         },
 
         pauseVideo(){
@@ -97,12 +156,16 @@ export default Ember.Component.extend({
         unMuteAudio(){
             get(this, 'videoService').unMuteAudio();
             set(this, 'isAudioOn', true);
+        },
+
+        closeChat(){
+          get(this, 'closeChat')();
         }
     },
 
     localMediaStarted(stream) {
         Ember.run.scheduleOnce('afterRender', this, function() {
-            this.$('#myvideo')[0].src = URL.createObjectURL(stream);
+          this.$('#myvideo')[0].src = URL.createObjectURL(stream);
         });
 
         let options = {};

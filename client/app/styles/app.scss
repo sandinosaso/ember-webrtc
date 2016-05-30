@@ -11,7 +11,7 @@ $color-accent: $palette-pink-A200;
 .material-icons.md-48 { font-size: 48px; }
 
 body {
-  height: 150vh;
+  height: 100vh;
 }
 
 .marvel-device.iphone6.silver {
@@ -31,7 +31,7 @@ body {
 }
 
 .option {
-  width: 42px;
+  width: 43px;
   padding-top: 8px;
 }
 
@@ -63,8 +63,19 @@ span.emoji {
 }
 
 #message-list {
-  height: 440px;
+  width: 100%;
+  height: 140px;
   overflow: scroll;
+  margin-bottom: 36px;
+  box-shadow: 0 -2px 22px #555;
+}
+
+#message-list.message-list-big {
+  height: 440px;
+}
+
+#message-list.message-list-small {
+  height: 140px;
 }
 
 #input-name {
@@ -78,7 +89,7 @@ span.emoji {
 
 input.input-message {
   display: inline-block;
-  width: 87%;
+  width: 89%;
 }
 
 input.input-message:focus,
@@ -94,9 +105,34 @@ input.input-message:hover {
 }
 
 .top-bar{
-  height: 50px;
+  height: 65px;
   background-color: white;
 }
+
+.top-bar.top-bar-small {
+  height: 65px;
+}
+
+.top-bar.top-bar-big {
+  height: 90%;
+}
+
+/*.bottom-bar {
+  height: 60px;
+  background-color: white;
+}
+
+.bottom-bar ul.chat-controls {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  float: left;
+}
+
+.bottom-bar ul.chat-controls > li {
+  display: inline;
+  padding: 0 5px;
+}*/
 
 .chat-messages-container{
   position: fixed;
@@ -104,6 +140,48 @@ input.input-message:hover {
   right: 0;
   width: 400px;
 }
+
+.chat-app-first-line{
+  background-color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.top-action-bar .agents {
+  float: left;
+}
+
+.top-action-bar .agents .avatar {
+  display: inline-block;
+}
+
+.top-action-bar .agents .avatar:not(:first-child) {
+    margin-left: -22px;
+}
+
+
+.chat-app .message .avatar img,
+.top-action-bar .agents .avatar img {
+    max-width: inherit;
+    height: 44px;
+    width: 44px;
+}
+
+.media-object, .chat-app .message .avatar img {
+    display: block;
+}
+
+.img-circle,
+.chat-app .message .avatar img,
+.top-action-bar .agents .avatar img {
+    border-radius: 50%;
+}
+
+audio, canvas, iframe, img, svg, video {
+    vertical-align: middle;
+}
+
+
 
 /* VIDEO CHAT STYLES */
 
@@ -125,7 +203,6 @@ input.input-message:hover {
     color: #999;
     text-align: center;
     padding: 10px;
-    box-shadow: 0 -2px 22px #555;
 }
 
 
@@ -175,7 +252,7 @@ input.input-message:hover {
 }
 
 .room-navbar{
-  height: 60px;
+  height: 50px;
 }
 
 .room-navbar ul.video-controls {

@@ -1,8 +1,12 @@
-{{#if nameIsSet}}
-  <h3 class="light white">Welcome <b>{{ userName }}</b></h3>
-  {{#chat-messages}}{{/chat-messages}}
+{{#if isOpen}}
+  {{chat-messages
+    closeChat=(action 'toggleChat')}}
 {{else}}
-  <div style="margin-top: 20px">
-    {{#chat-username}}{{/chat-username}}
+  <div class="chat-messages-container" {{action 'toggleChat'}}>
+    <div class="chat-app-first-line">
+      <span>Necesitas ayuda?. Solicita ayuda.</span>
+    </div>
   </div>
 {{/if}}
+
+
