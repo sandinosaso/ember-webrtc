@@ -36,9 +36,8 @@ You will need the following things properly installed on your computer.
 In order to make it work you must create a config.js file on server/node-pusher-server
 with the following content
 
-```
+```javascript
 var config = {};
-
 
 config.web = {};
 config.pusher = {
