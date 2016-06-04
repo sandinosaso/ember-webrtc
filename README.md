@@ -31,6 +31,28 @@ You will need the following things properly installed on your computer.
 * `ember s`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
+## Environment configuration
+
+In order to make it work you must create a config.js file on server/node-pusher-server
+with the following content
+
+```
+var config = {};
+
+
+config.web = {};
+config.pusher = {
+  appId : 'YOUR-PUSHER-APP-ID',
+  key: 'YOUR-PUSHER-KEY',
+  secret: 'YOUR-PUSHER-SECRET',
+  encrypted: true
+};
+
+config.web.port = process.env.WEB_PORT || 3000;
+
+module.exports = config;
+```
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details
