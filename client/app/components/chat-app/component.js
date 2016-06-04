@@ -17,6 +17,12 @@ export default Component.extend({
     }
   }),
 
+  mouseEnter: function() {
+    if (!get(this, 'isOpen')){
+      this.toggleProperty('isOpen');
+    }
+  },
+
   actions: {
     toggleChat() {
       this.toggleProperty('isOpen');

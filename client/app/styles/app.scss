@@ -138,17 +138,27 @@ input[type="file"].none {
   display: none;
 }
 
-.chat-messages-container{
+.chat-messages-container {
   position: fixed;
   bottom: 0;
   right: 0;
   width: 400px;
 }
 
-.chat-app-first-line{
-  background-color: white;
-  padding: 10px;
+.chat-app-first-line {
+  background-image: url("images/message-icon.png");
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
   cursor: pointer;
+  background-position: 50%;
+  background-color: #0074b0;
+  border: 1px solid #004c88;
 }
 
 .top-action-bar .agents {

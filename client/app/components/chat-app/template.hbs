@@ -2,10 +2,8 @@
   {{chat-messages
     closeChat=(action 'toggleChat')}}
 {{else}}
-  <div class="chat-messages-container" {{action 'toggleChat'}}>
-    <div class="chat-app-first-line">
-      <span>Necesitas ayuda?. Solicita ayuda.</span>
-    </div>
+  <div class="chat-messages-container" mouseEnter={{action 'toggleChat'}}>
+    <div class="chat-app-first-line"></div>
   </div>
 {{/if}}
 
