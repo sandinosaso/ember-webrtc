@@ -23,6 +23,11 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
+* `cd server/signalmaster`
+* `node server.js`
+* `cd server/node-pusher-server`
+* `node app.js`
+* `cd client`
 * `ember s`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
