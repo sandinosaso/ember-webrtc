@@ -13,22 +13,10 @@ var pusher = new Pusher({
   encrypted: config.pusher.encrypted,
 });
 
-var port = config.server.port;
+var port = config.web.port;
 
 
 var app = express();
-// app.use(function(req, res, next) {
-//   req.rawBody = "";
-//   req.setEncoding("utf8");
-
-//   req.on("data", function(chunk) {
-//     req.rawBody += chunk;
-//   });
-
-//   req.on("end", function() {
-//     next();
-//   });
-// });
 
 app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(bodyParser.urlencoded({
@@ -47,11 +35,6 @@ app.post("/messages", function(req, res){
 
   console.log(data);
   pusher.trigger('messages', 'new_message', data);
-  // var webhook = pusher.webhook(req);
-  // console.log("data:", webhook.getData());
-  // console.log("events:", webhook.getEvents());
-  // console.log("time:", webhook.getTime());
-  // console.log("valid:", webhook.isValid());
   res.send("OK");
 });
 
