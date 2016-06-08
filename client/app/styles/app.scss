@@ -117,25 +117,13 @@ input.input-message:hover {
   height: 90%;
 }
 
-/*.bottom-bar {
-  height: 60px;
-  background-color: white;
-}
-
-.bottom-bar ul.chat-controls {
-  list-style: none;
-  margin: 0;
-  padding: 5px 0;
-  float: left;
-}
-
-.bottom-bar ul.chat-controls > li {
-  display: inline;
-  padding: 0 5px;
-}*/
 
 input[type="file"].none {
   display: none;
+}
+
+.demo-list-action {
+  width: 300px;
 }
 
 .chat-messages-trigger{
@@ -245,6 +233,11 @@ audio, canvas, iframe, img, svg, video {
 
 /* VIDEO CHAT STYLES */
 
+ul.fileList li,
+ul.nostyle li {
+  list-style: none;
+}
+
 .btn {
     padding: 7px 15px;
     background-color: white;
@@ -277,7 +270,7 @@ audio, canvas, iframe, img, svg, video {
   border-radius: 8px;
   position: absolute;
   top: 150px;
-  right: 67px;
+  right: 66px;
 }
 
 .participants video.video-big {

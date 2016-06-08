@@ -27,9 +27,24 @@ export default Ember.Service.extend(Ember.Evented, {
         this.on('localMediaStarted', this.connectToRoom.bind(this));
 
         window.videochat = this;
-        this.get('store').pushPayload({people: [ { id: 'xander1', name: 'Xander1' } ] });
-        this.get('store').pushPayload({people: [ { id: 'xander2', name: 'Xander2' } ] });
-        this.get('store').pushPayload({people: [ { id: 'xander3', name: 'Xander3' } ] });
+
+        get(this, 'store').push({
+          data: [{
+            id: 'xander1',
+            type: 'person',
+            attributes: {
+              name: 'xander1'
+            },
+            relationships: {}
+          }, {
+            id: 'xander2',
+            type: 'person',
+            attributes: {
+              name: 'xander2'
+            },
+            relationships: {}
+          }]
+        });
 
         this.set('sessionManager', sessionManager);
     },
