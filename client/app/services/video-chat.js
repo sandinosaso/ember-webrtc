@@ -1,26 +1,21 @@
 import Ember from 'ember';
-import SocketIo1xConnection from '../utils/SocketIo1xConnection';
+
+const {
+  inject: { service },
+  get
+} = Ember;
 
 export default Ember.Service.extend(Ember.Evented, {
 
     sessionManager: null,
     localMedia: null,
     connectionReady: false,
-    store: Ember.inject.service(),
+    store: service(),
+    webrtc: service(),
 
     init() {
         this._super(...arguments);
-        const sessionManager = new SimpleWebRTC({
-            remoteVideosEl: null,
-            nick: 'xander1',
-            localVideoEl: null,
-            autoRequestMedia: false,
-            connection: new SocketIo1xConnection({
-                url: 'http://localhost:8888',
-                port: '8888',
-                socketio: {'force new connection':true},
-            })
-        });
+        const sessionManager = get(this, 'webrtc.sessionManager');
 
         sessionManager.on('connectionReady', () => this.set('connectionReady', true));
         sessionManager.on('createdPeer', this.createdPeer.bind(this));
@@ -32,9 +27,26 @@ export default Ember.Service.extend(Ember.Evented, {
         this.on('localMediaStarted', this.connectToRoom.bind(this));
 
         window.videochat = this;
-        this.get('store').pushPayload({people: [ { id: 'xander1', name: 'Xander1' } ] });
-        this.get('store').pushPayload({people: [ { id: 'xander2', name: 'Xander2' } ] });
-        this.get('store').pushPayload({people: [ { id: 'xander3', name: 'Xander3' } ] });
+
+        get(this, 'store').push({
+          data: [{
+            id: 'xander1',
+            type: 'person',
+            attributes: {
+              name: 'xander1'
+            },
+            relationships: {}
+          }, {
+            id: 'xander2',
+            type: 'person',
+            attributes: {
+              name: 'xander2'
+            },
+            relationships: {}
+          }]
+        });
+
+        this.set('sessionManager', sessionManager);
     },
 
     joinRoom(media) {
@@ -88,10 +100,6 @@ export default Ember.Service.extend(Ember.Evented, {
         this.get('sessionManager').joinRoom('emberjs');
     },
 
-    createdPeer(peer) {
-
-    },
-
     videoAdded(peer) {
         this.get('store').find('person', peer.nick).then((person) => {
             person.set('peer', peer);
@@ -103,5 +111,8 @@ export default Ember.Service.extend(Ember.Evented, {
         this.get('store').find('person', peer.nick).then((person) => {
             this.trigger('videoRemoved', person);
         });
+    },
+
+    createdPeer(peer) {
     }
 });

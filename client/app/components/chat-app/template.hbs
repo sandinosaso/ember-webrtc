@@ -1,10 +1,12 @@
 {{#if isOpen}}
-  {{chat-messages
-    closeChat=(action 'toggleChat')}}
-{{else}}
-  <div class="chat-messages-container" mouseEnter={{action 'toggleChat'}}>
-    <div class="chat-app-first-line"></div>
-  </div>
+  {{#transition-group transition-class="chat-messages-container"}}
+    {{chat-messages
+        closeChat=(action 'toggleChat')}}
+  {{/transition-group}}
 {{/if}}
+
+<div class="chat-messages-trigger" mouseEnter={{action 'toggleChat'}}>
+  <div class="chat-app-first-line"></div>
+</div>
 
 
