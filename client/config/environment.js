@@ -17,12 +17,23 @@ module.exports = function(environment) {
       includePaths: ['bower_components/material-design-lite/src']
     },
 
+    // firebase: {
+    //   apiKey: "AIzaSyAFTGdSfDEqT-G7ahs2k-zdRezoCrWEoKA",
+    //   authDomain: "ember-chat-app-a11f7.firebaseapp.com",
+    //   databaseURL: "https://ember-chat-app-a11f7.firebaseio.com",
+    //   storageBucket: "ember-chat-app-a11f7.appspot.com"
+    // },
+    //
+    firebase: 'https://ember-chat-app-a11f7.firebaseio.com/',
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
       PUSHER: {
         key: '376656a8edb3f7821b1a',
       },
+
+
     }
   };
 

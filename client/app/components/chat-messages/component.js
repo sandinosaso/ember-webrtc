@@ -13,7 +13,8 @@ const {
 
 export default Component.extend({
   currentUserService: service('current-user'),
-  pusher: service(),
+  store: service(),
+
   messages: ['Hola como te podemos ayudar?'].map((message) => {
     return {
       username: 'pusher',
@@ -29,9 +30,14 @@ export default Component.extend({
   init() {
     this._super(...arguments);
 
-    get(this, 'pusher').onMessage((data) => {
-      get(this, 'messages').pushObject(data);
+    let store = get(this, 'store');
+
+    let newMessage = store.createRecord('message', {
+        content: 'Mensaje de prueba',
+        createdAt: new Date()
     });
+
+    newMessage.save();
   },
   actions: {
     newMessage() {
