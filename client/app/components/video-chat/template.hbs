@@ -28,6 +28,7 @@
       </div>
     {{else}}
       <div class="participants">
+              <video id='myvideo' class="{{myVideoClass}}" autoplay muted="muted" style="transform: scaleX(-1)"/>
           {{#if (and videoService.localMedia inVideo)}}
               <video id='myvideo' class="{{myVideoClass}}" autoplay muted="muted" style="transform: scaleX(-1)"/>
           {{/if}}

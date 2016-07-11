@@ -8,7 +8,6 @@ export default Ember.Service.extend(Ember.Evented, {
     connectionReady: false,
     store: Ember.inject.service(),
 
-
     init() {
         this._super(...arguments);
         const sessionManager = new SimpleWebRTC({
@@ -24,9 +23,6 @@ export default Ember.Service.extend(Ember.Evented, {
         });
 
         this.set('sessionManager', sessionManager);
-
-        console.log('webrtc:',this.get('sessionManager.webrtc'));
-
     },
 
      connectToRoom(room) {
