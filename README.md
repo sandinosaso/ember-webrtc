@@ -77,3 +77,7 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+  
+  Example demo is for using as a chat support center (you can turn on/off video camera, mic. Chat with some agent and send/recieve files using the chat box.
+  
+  http://imgur.com/0XAXIUi
