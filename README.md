@@ -80,5 +80,4 @@ Specify what it takes to deploy your app.
   
 
 Example demo is for using as a chat support center (you can turn on/off video camera, mic. Chat with some agent and send/recieve files using the chat box.
-  
-![alt tag] (http://imgur.com/0XAXIUi)
+![Alt text](http://i.imgur.com/0XAXIUi.png "Example App")
