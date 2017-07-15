@@ -1,6 +1,9 @@
 import Ember from 'ember';
 import SocketIo1xConnection from '../utils/SocketIo1xConnection';
 
+var socketUrl = location.origin.replace(/^http/, 'ws'); //http://localhost:8888
+var socketPort = '8888';
+
 export default Ember.Service.extend(Ember.Evented, {
 
     sessionManager: null,
@@ -17,8 +20,8 @@ export default Ember.Service.extend(Ember.Evented, {
             localVideoEl: null,
             autoRequestMedia: false,
             connection: new SocketIo1xConnection({
-                url: 'http://localhost:8888',
-                port: '8888',
+                url: socketUrl,
+                port: socketPort,
                 socketio: {'force new connection':true},
             })
         });
